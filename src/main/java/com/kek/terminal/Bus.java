@@ -2,20 +2,20 @@ package com.kek.terminal;
 
 public class Bus {
 
-	public Bustype bustype;
-	public Capacity capacity;
-	public Comforttype comforttype;
+	String bustype;
+	int capacity;
+	int comforttype;
 
-Bus(){
-	bustype = new Bustype();
-	capacity = new Capacity();
-	comforttype = new Comforttype();
+ Bus(){
+	Bus bigbus = Bus("bigbus, 150, 3");
+
 	
 }
 
 public void getbustype(){
 	return bustype();}
 	
+
 public void getcapacity(){
 	return capacity();}
 	
