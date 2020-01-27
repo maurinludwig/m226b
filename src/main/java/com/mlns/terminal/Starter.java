@@ -1,3 +1,9 @@
+/**
+ * Title: Busterminal M226b
+ * Author: Nicolas Schulle & Maurin Ludwig
+ * Version: 1.1
+ * last modified: 17.01.2020
+ */
 package com.mlns.terminal;
 
 import com.mlns.exceptions.NoPlatformAvailableException;
@@ -6,12 +12,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * defines starter class
+ */
 public class Starter {
 
     private static Scanner scanner = new Scanner(System.in);
     private static BusTerminal busTerminal;
     private static List<Vehicle> vehicles;
 
+    /**
+     * defines actions for input
+     * @param args
+     * @throws NoPlatformAvailableException
+     */
     public static void main(String[] args) throws NoPlatformAvailableException {
         setUp();
         boolean terminted = false;
@@ -27,6 +41,11 @@ public class Starter {
         }
     }
 
+    /**
+     * creates array with platforms. defines if platform is for international routes.
+     *defines if platform is for busses or not.
+     * @throws NoPlatformAvailableException
+     */
     private static void setUp() throws NoPlatformAvailableException {
         busTerminal = new BusTerminal("Zürich");
         busTerminal.setPlatforms(Arrays.asList(
@@ -39,13 +58,16 @@ public class Starter {
                 new Platform("3", false, false),
                 new Platform("4", false, false)
         ));
+        /**
+         * creates routes with routename, bus and platform
+         */
         vehicles = Arrays.asList(
                 new Bus(30, true, busTerminal.getPlatform(true, false), "Bern"),
                 new Bus(50, true, busTerminal.getPlatform(true, true), "München"),
                 new Bus(50, true, busTerminal.getPlatform(true, true), "Mels"),
                 new Bus(50, true, busTerminal.getPlatform(true, true), "Rapperswil")
         );
-        System.out.println("Willkommen!");
+        System.out.println("Welcome!");
     }
 
     private static int getAction() {
@@ -63,27 +85,49 @@ public class Starter {
         return action;
     }
 
+    /**
+     * prints menu
+     * @return
+     */
     private static String askForAction() {
         System.out.println();
-        System.out.println("Sie haben folgende Möglichkeiten:");
-        System.out.println("1 : Fahrplan anzeigen");
-        System.out.println("2 : Reise Buchen");
-        System.out.println("3 : Programm beenden");
+        System.out.println("The following options are available to you:");
+        System.out.println("1 : Show timetbale");
+        System.out.println("2 : Book a trip");
+        System.out.println("3 : Terminate the program");
         return scanner.nextLine();
     }
 
+    /**
+     * prints available routes
+     */
     private static void printScedule() {
-        System.out.println("Folgende Verbindungen sind verfügbar:");
+        System.out.println("The following connections are available to you:");
         for(Vehicle v : vehicles) {
             System.out.println("------------------------");
-            System.out.println("Nach: " + v.getTo());
+            System.out.println("To: " + v.getTo());
             System.out.println("Platform: " + v.getPlatform().getPlatformNumber());
-            System.out.println("Kapazität: " + v.getCapacity());
+            System.out.println("Capacity: " + v.getCapacity());
             System.out.println("------------------------");
             System.out.println();
         }
     }
-
+    /**
+     * asks input for destination
+     * @return
+     */
+    private static String askForDestination() {
+        System.out.println();
+        System.out.println("Where do you want to go. Please enter the number of your destination");
+        for(int i = 0; i < vehicles.size(); i++) {
+            System.out.println(i + 1 + ": " + vehicles.get(i).getTo());
+        }
+        return scanner.nextLine();
+    }
+    /**
+     * checks if destination input is given.
+     * matches input to route
+     */
     private static void bookTrip() {
         String destinationAsString = askForDestination();
         int destination = 0;
@@ -96,17 +140,13 @@ public class Starter {
                 destinationAsString = askForDestination();
             }
         }
+        /**
+         * prints destination and platform for chosen route.
+         */
         System.out.println();
-        System.out.println("Glückwunsch! Sie haben eine Reise nach " + vehicles.get(destination).getTo() + " gebucht.");
-        System.out.println("Die Reise beginnt auf Platform " + vehicles.get(destination).getPlatform().getPlatformNumber() + "");
+        System.out.println("Congratulations! You booked a trip to " + vehicles.get(destination).getTo() + "");
+        System.out.println("The trip starts at platfom " + vehicles.get(destination).getPlatform().getPlatformNumber() + "");
     }
 
-    private static String askForDestination() {
-        System.out.println();
-        System.out.println("Wohin wollen Sie fahren? Bitte geben Sie die entsprechende Zahl ein.");
-        for(int i = 0; i < vehicles.size(); i++) {
-            System.out.println(i + 1 + ": " + vehicles.get(i).getTo());
-        }
-        return scanner.nextLine();
-    }
+
 }
