@@ -106,7 +106,18 @@ public class Starter {
             System.out.println();
         }
     }
-
+    /**
+     * asks input for destination
+     * @return
+     */
+    private static String askForDestination() {
+        System.out.println();
+        System.out.println("Where do you want to go. Please enter the number of your destination");
+        for(int i = 0; i < vehicles.size(); i++) {
+            System.out.println(i + 1 + ": " + vehicles.get(i).getTo());
+        }
+        return scanner.nextLine();
+    }
     /**
      * checks if destination input is given.
      * matches input to route
@@ -131,16 +142,5 @@ public class Starter {
         System.out.println("The trip starts at platfom " + vehicles.get(destination).getPlatform().getPlatformNumber() + "");
     }
 
-    /**
-     * asks input for destination
-     * @return
-     */
-    private static String askForDestination() {
-        System.out.println();
-        System.out.println("Where do you want to go. Please enter the number of your destination");
-        for(int i = 0; i < vehicles.size(); i++) {
-            System.out.println(i + 1 + ": " + vehicles.get(i).getTo());
-        }
-        return scanner.nextLine();
-    }
+
 }
