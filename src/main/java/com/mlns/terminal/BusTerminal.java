@@ -5,6 +5,9 @@ import com.mlns.exceptions.NoPlatformAvailableException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * defines class BusTerminal
+ */
 public class BusTerminal {
 
     private String name;

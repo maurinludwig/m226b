@@ -1,5 +1,8 @@
 package com.mlns.terminal;
 
+/**
+ * defines class Vehicle
+ */
 public abstract class Vehicle {
 
     private int capacity;

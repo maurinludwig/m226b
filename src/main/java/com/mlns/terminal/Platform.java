@@ -1,5 +1,8 @@
 package com.mlns.terminal;
 
+/**
+ * defines platform
+ */
 public class Platform {
 
     private String platformNumber;

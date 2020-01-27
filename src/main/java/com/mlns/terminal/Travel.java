@@ -2,6 +2,9 @@ package com.mlns.terminal;
 
 import java.util.Date;
 
+/**
+ * defines class Travel
+ */
 public class Travel {
 
     private String destination;
