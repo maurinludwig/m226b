@@ -1,3 +1,9 @@
+/**
+ * Title: Busterminal M226b
+ * Author: Nicolas Schulle & Maurin Ludwig
+ * Version: 1.1
+ * last modified: 17.01.2020
+ */
 package com.mlns.terminal;
 
 import com.mlns.exceptions.NoPlatformAvailableException;
