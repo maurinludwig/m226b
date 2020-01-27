@@ -87,8 +87,8 @@ public class Starter {
         System.out.println();
         System.out.println("The following options are available to you:");
         System.out.println("1 : Show timetbale");
-        System.out.println("2 : Book a Trip");
-        System.out.println("3 : terminate the program");
+        System.out.println("2 : Book a trip");
+        System.out.println("3 : Terminate the program");
         return scanner.nextLine();
     }
 
