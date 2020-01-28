@@ -26,6 +26,7 @@ public class Starter {
      *
      * @param args: Arguments
      * @throws NoPlatformAvailableException: No platform is available
+     * @throws TripNotFoundException: Trip not found
      */
     public static void main(String[] args) throws NoPlatformAvailableException, TripNotFoundException {
         setUp();
@@ -136,6 +137,7 @@ public class Starter {
     }
     /**
      * Checks if destination input is given. Matches input to route. Gives feedback as output.
+     * @throws TripNotFoundException: Trip not found
      */
     private static void bookTrip() throws TripNotFoundException {
         String destinationAsString = askForDestination();
