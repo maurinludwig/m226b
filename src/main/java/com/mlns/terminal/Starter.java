@@ -1,6 +1,7 @@
 package com.mlns.terminal;
 
 import com.mlns.exceptions.NoPlatformAvailableException;
+import com.mlns.exceptions.TripNotFoundException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Starter {
      * @param args: Arguments
      * @throws NoPlatformAvailableException: No platform is available
      */
-    public static void main(String[] args) throws NoPlatformAvailableException {
+    public static void main(String[] args) throws NoPlatformAvailableException, TripNotFoundException {
         setUp();
         boolean terminted = false;
         while (!terminted) {
@@ -34,7 +35,11 @@ public class Starter {
             if (action == 1) {
                 printScedule();
             } else if (action == 2) {
-                bookTrip();
+                try {
+                    bookTrip();
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw new TripNotFoundException("Destination not found");
+                }
             } else if (action == 3) {
                 terminted = true;
             }
@@ -132,7 +137,7 @@ public class Starter {
     /**
      * Checks if destination input is given. Matches input to route. Gives feedback as output.
      */
-    private static void bookTrip() {
+    private static void bookTrip() throws TripNotFoundException {
         String destinationAsString = askForDestination();
         int destination = 0;
         boolean hasDestination = false;
@@ -142,6 +147,8 @@ public class Starter {
                 hasDestination = true;
             } catch (NumberFormatException e) {
                 destinationAsString = askForDestination();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new TripNotFoundException("Destination not found");
             }
         }
 
