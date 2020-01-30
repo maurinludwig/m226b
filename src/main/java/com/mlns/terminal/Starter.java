@@ -56,20 +56,14 @@ public class Starter {
         BusTerminal busTerminal = new BusTerminal("Zürich");
         busTerminal.setPlatforms(Arrays.asList(
                 new Platform("A", true, true),
-                new Platform("B", true, true),
-                new Platform("C", true, false),
-                new Platform("D", true, false),
-                new Platform("1", false, true),
-                new Platform("2", false, true),
-                new Platform("3", false, false),
-                new Platform("4", false, false)
+                new Platform("B", true, false)
         ));
 
         vehicles = Arrays.asList(
-                new Bus(30, true, busTerminal.getPlatform(true, false), "Bern"),
+                new Bus(30, true, busTerminal.getPlatform(true, true), "Bern"),
                 new Bus(50, true, busTerminal.getPlatform(true, true), "München"),
-                new Bus(50, true, busTerminal.getPlatform(true, true), "Mels"),
-                new Bus(50, true, busTerminal.getPlatform(true, true), "Rapperswil")
+                new Bus(50, true, busTerminal.getPlatform(true, false), "Mels"),
+                new Bus(50, true, busTerminal.getPlatform(true, false), "Rapperswil")
         );
         System.out.println("Welcome!");
     }
